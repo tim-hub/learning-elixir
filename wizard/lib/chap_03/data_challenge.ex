@@ -34,7 +34,7 @@ defmodule Wizard.DataChallenge do
   Return the product.
   """
   def multiplier(a, b) do
-
+    a * b
   end
 
   @doc """
@@ -42,7 +42,7 @@ defmodule Wizard.DataChallenge do
   Return the product.
   """
   def multiplier(a, b, c) do
-
+    a*b*c
   end
 
   @doc"""
@@ -54,7 +54,7 @@ defmodule Wizard.DataChallenge do
   round/1.
   """
   def percent(a, b) do
-
+    "#{round(b/a*100)}%"
   end
 
   @doc """
