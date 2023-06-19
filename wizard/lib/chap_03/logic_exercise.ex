@@ -49,7 +49,7 @@ defmodule Wizard.LogicExercise do
     answer_10 = "1"
     test_10 = String.length(answer_10) && true
 
-    answer_11 = %{distance: "12a"}
+    answer_11 = %{"distance"  => "12a"}
     test_11 = Map.get(answer_11, "distance") && true
 
     test_1 && test_2 && test_3 && test_4 && test_5 && test_6 && test_7 && test_8 && test_9 && test_10 && test_11
