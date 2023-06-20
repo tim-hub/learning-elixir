@@ -37,6 +37,16 @@ defmodule Wizard.MatchExercise do
   be combined safely. Returns true or false.
   """
   def can_mix?("gunpowder", _anything), do: false
+  def can_mix?(_anything, "gunpowder"), do: false
+
+  def can_mix?("dust", _anything), do: true
+  def can_mix?(_anything, "dust"), do: true
+  def can_mix?("rose", "ginger"), do: true
+  def can_mix?("rose", "moondew"), do: true
+  def can_mix?("moondew", "rose"), do: true
+  def can_mix?(_, "ginger"), do: false
+  def can_mix?( "ginger",_), do: false
+  def can_mix?(_, _), do: true
 
   @doc """
   Test your function definitions
