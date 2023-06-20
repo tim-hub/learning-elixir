@@ -15,8 +15,8 @@ defmodule Wizard.Pin do
     "This spell is good luck"
   """
   def spell(type, map) do
-    # %{^type => a} = map
-    # "This spell is #{a}."
+     %{^type => a} = map
+     "This spell is #{a}."
   end
 
 end
