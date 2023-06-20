@@ -9,31 +9,30 @@ defmodule Wizard.CollectionExercise do
   Write a function takes a list and prints out the first 
   element of that list.
   """
-  def first(_) do
-
+  def first([a|_]) do
+    a
   end
 
   @doc """
   Write a function takes a list and prints out the last 
   element of that list.
   """
-  def last(_) do
-
+  def last(l) do
+    List.last(l)
   end
 
   @doc """
   Return the list with "Carbon" removed from the list.
   """
   def remove() do
-    ["Carbon", "Hydrogen", "Ruthenium", "Silicon"]
+    List.delete(["Carbon", "Hydrogen", "Ruthenium", "Silicon"], "Carbon")
   end
 
   @doc """
   Combine the two lists. 
   """
   def combine() do
-    ["Carbon", "Hydrogen"]
-    ["Tin", "Lead"]
+    ["Carbon", "Hydrogen"]++["Tin", "Lead"]
   end
 
   @doc """
@@ -50,8 +49,12 @@ defmodule Wizard.CollectionExercise do
   * Cabbage and Casting, by Cilka Parfait, 1975
   """
   def books() do
-    book = Map.new()
-    [book]
+    [
+      %{title: "A Wizard Compendium", year: 1968, author: "Vesuvi Monmount"},
+      %{title: "Spells for All Seasons", year: 1488, author: "Helen Troy"},
+      %{title: "The House of Herbs", year: 1856, author: "Nikola Wynne"},
+      %{title: "Cabbage and Casting", year: 1975, author: "Cilka Parfait"},
+    ]
   end
 
   @doc """
@@ -61,7 +64,8 @@ defmodule Wizard.CollectionExercise do
   already written?
   """
   def book_keys(_) do
-
+    [h|_] = books()
+    Map.keys(h)
   end
 
 
