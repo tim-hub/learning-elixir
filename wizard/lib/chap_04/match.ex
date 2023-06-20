@@ -8,8 +8,8 @@ defmodule Wizard.Match do
   Use the match operator with a tuple
   """
   def tuple do
-    # {item, quantity, potion}  = {"newt", 1, :antidote}
-    # "The #{potion} potion needs #{quantity} #{item}"
+    {item, quantity, potion}  = {"newt", 1, :antidote}
+    "The #{potion} potion needs #{quantity} #{item}"
   end
 
   @doc """
@@ -20,14 +20,14 @@ defmodule Wizard.Match do
 
     iex> l = ["gold", "copper", "silver"]
     ["gold", "copper", "silver"]
-    iex> [one, two, three] = list
+    iex> [one, two, three] = l
     ["gold", "copper", "silver"]
-    iex> [head | tail] = list
+    iex> [head | tail] = l
     ["gold", "copper", "silver"]
   """
-  def list() do
-    # IO.puts head
-    # tail
+  def list([head | tail]) do
+     IO.puts head
+     tail
   end
 
   @doc"""
@@ -46,9 +46,9 @@ defmodule Wizard.Match do
     iex> Wizard.Match.map(potion)
     "A good luck spell."
   """
-  # def map(%{spell: s, type: t}) do
-    # "A #{t} #{s} spell."
-  # end
+   def map(%{spell: s, type: t}) do
+     "A #{t} #{s} spell."
+   end
 
   @doc"""
   Pattern match on function definitions
