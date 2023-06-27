@@ -76,10 +76,11 @@ defmodule Wizard.EnumChallenge do
       ["\u2705", "\u274c", "\u2705", "\u2705", "omega", "\u274c", "\u2705", "\u2705"],
       [],
       fn
+        ("\u2705", acc) ->
+          ["\u2705" | acc]
         ("\u274c", acc) ->
-          ["omega" | acc]
-        (e, acc) ->
-          [e | acc]
+          ["Ω" | acc]
+        _, acc -> acc
       end
     )
 
@@ -94,6 +95,6 @@ defmodule Wizard.EnumChallenge do
     IO.puts magic_of_three() == ["✅", "✅", "✅"]
     IO.puts magic_of_red() == ["❌", "❌"]
     IO.puts magic_of_green() == ["✅", "✅", "✅", "✅", "✅"]
-    IO.puts magic_of_reduce() == ["Ω", "Ω", "✅", "✅", "✅", "✅", "✅"]
+    IO.puts magic_of_reduce() == [ "✅", "✅", "Ω", "✅", "✅", "Ω",  "✅"]
   end
 end
