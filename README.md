@@ -1,10 +1,15 @@
+# How to start
+
+> iex -s mix
+> recompile
+
+
 # Learning Elixir
 This is the repository for the LinkedIn Learning course `Learning Elixir`. The full course is available from [LinkedIn Learning][lil-course-url]. 
 
 The Elixir Programming Language is a functional language for creating easy to maintain and easy to scale applications. Elixir harnesses the power of the Erlang Virtual Machine, which offers scalability, high-availability, and fault-tolerance. Elixir is consistently ranked one of the most loved languages by developers and is found across a variety of industries for everything from web development to data ingestion to embedded software. 
 
 Through practical examples and exercises, this course helps you build your understanding of Elixir step by step, from the basics of data types, operators, and conditionals through advanced topics like managing control flow structures, functions, and recursion. At each step, instructor Vanessa Lee guides you through challenges test out your new Elixir skills.
-
 ## Learning objectives
 - Installing Elixir and Erlang
 - Functional programming basics

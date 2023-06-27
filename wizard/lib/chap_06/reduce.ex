@@ -7,11 +7,15 @@ defmodule Wizard.Reduce do
     numbers = [2, 3, 4]
     IO.inspect(numbers, label: "Numbers")
 
-    r = Enum.reduce(numbers, 5, fn(n, acc) -> 
-      IO.inspect(acc, label: "Accumulator")
-      IO.inspect(n, label: "Element")
-      IO.inspect(n * acc, label: "Product")
-    end)
+    r = Enum.reduce(
+      numbers,
+      5,
+      fn (n, acc) ->
+        IO.inspect(acc, label: "Accumulator")
+        IO.inspect(n, label: "Element")
+        IO.inspect(n * acc, label: "Product")
+      end
+    )
 
     IO.inspect(r, label: "Reduce")
   end
@@ -20,18 +24,30 @@ defmodule Wizard.Reduce do
     elements = ["Carbon", "Hydrogen", "Iron"]
     IO.inspect(elements, label: "Elements")
 
-    Enum.reduce(elements, "", fn e, acc -> 
-      acc <> String.downcase(e)
-    end)
+    Enum.reduce(
+      elements,
+      "",
+      fn e, acc ->
+        acc <> String.downcase(e)
+      end
+    )
   end
 
   def example3 do
     elements = [
-      %{name: "Hydrogen", number: 1, weight: 1}, 
-      %{name: "Carbon", number: 6, weight: 12}, 
+      %{name: "Hydrogen", number: 1, weight: 1},
+      %{name: "Carbon", number: 6, weight: 12},
       %{name: "Iridium", number: 77, weight: 192}
     ]
     IO.inspect(elements, label: "Elements")
+    Enum.reduce(
+      elements,
+      [],
+      fn (e, acc) ->
+        neutrons = e.weight - e[:number]
+        [Map.put(e, :neutrons, neutrons) | acc]
+      end
+    )
   end
 
   @doc """
@@ -40,16 +56,31 @@ defmodule Wizard.Reduce do
   9 "transition metal"
   14 "other non metal" 
   """
-  def example4 do
-    elements = [
-      %{name: "Hydrogen", group: 1}, 
-      %{name: "Carbon", group: 14}, 
-      %{name: "Iridium", group: 9}
-    ]
-    IO.inspect(elements, label: "Elements")
-  end
+def example4 do
+  elements = [
+  %{name: "Hydrogen", group: 1},
+  %{name: "Carbon", group: 14},
+  %{name: "Iridium", group: 9}
+  ]
+  IO.inspect(elements, label: "Elements")
+
+
+
+  Enum.reduce(
+    elements,
+    [],
+    fn
+       %{group: 9} = e, acc ->
+         class = classify(e, "transition metail")
+         [class | acc]
+       _ = e, acc ->
+         class = classify(e, "unknown")
+         [class | acc]
+    end
+  )
+end
 
   def classify(map, classification) do
-    Map.put(map, :classification, classification)
-  end
+   Map.put(map, :classification, classification)
+   end
 end
