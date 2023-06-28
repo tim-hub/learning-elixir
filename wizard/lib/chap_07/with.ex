@@ -16,6 +16,8 @@ defmodule Wizard.With do
     with "Iron" <- Map.get(e, :name),
       8 <- Map.get(e, :group) do
         :ok
+    else
+      _ -> :error
     end
   end
 end
