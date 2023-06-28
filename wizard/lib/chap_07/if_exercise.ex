@@ -33,23 +33,30 @@ defmodule Wizard.IfExercise do
     If the elment is named "Hydrogen", return true. 
     Otherwise, false.
     """
-    def hydrogen?(element) do
-      false
+    def hydrogen?(%{name: name}) do
+      name === "Hydrogen"
     end
 
     @doc """
     If the element's group is 1 or 14, return true.
     Otherwise, false
     """
-    def nonmetal?(element) do
-      false
+    def nonmetal?(%{group: group}) do
+      if group === 1 or group === 14 do
+          true
+      else
+        false
+      end
     end
 
     @doc """
     Unless the element is named Hydrogen, return "Not Hydrogen."
     """
-    def message(element) do
-      nil
+    def message(%{name: name}) do
+      if name !== "Hydrogen" do
+#          could use unless here
+          "Not Hydrogen"
+      end
     end
 
     @doc """
