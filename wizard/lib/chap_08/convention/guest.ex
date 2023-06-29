@@ -14,4 +14,8 @@ defmodule Wizard.Con.Guest do
     id = :rand.uniform(100)
     %{id: id, name: name}
   end
+
+  def add_specialty(guest, specialty) do
+    Map.put(guest, :specialty, specialty)
+  end
 end
