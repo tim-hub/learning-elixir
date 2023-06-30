@@ -23,10 +23,26 @@ defmodule Wizard.Advanced do
 
   def display_schedule([day | rest]) do
     IO.puts "Day #{to_string(day.day)}" 
-    # display_events(day.events)
+    display_events(day.events)
 
     display_schedule(rest)
   end
+
+  def display_events(events) when is_map(events) do
+    Enum.map(events, &display_events/1)
+#    &display_events is a function capture (&), /1, it takes one argument
+  end
+
+  def display_events( {time, [id | next_ids]}) do
+    section = Keyword.get(all_events(), String.to_atom(id))
+    IO.puts( "#{time} - #{section}")
+    display_events({time, next_ids})
+  end
+
+  def display_events( {_, []}) do
+    nil
+  end
+
 
   defp schedule() do
     [
@@ -68,15 +84,21 @@ defmodule Wizard.Advanced do
   end
 
   defp all_events() do
+#    a list of tuple, aka Keyword List
     [
       "0": "Networking",
-      "1": "Alchemy", "2": "Advanced Alchemy",
-      "3": "Wands", "4": "Spells",
-      "5": "Elements", "6": "New Elements",
-      "7": "Cauldrens", "8": "Intermediate Cauldrens",
+      "1": "Alchemy",
+      "2": "Advanced Alchemy",
+      "3": "Wands",
+      "4": "Spells",
+      "5": "Elements",
+      "6": "New Elements",
+      "7": "Cauldrens",
+      "8": "Intermediate Cauldrens",
       "9": "Advanced Cauldrens",
-      "10": "Demonstrations", "11": "Lunch",
-      "12": "Keynote by Liza Proctor", 
+      "10": "Demonstrations",
+      "11": "Lunch",
+      "12": "Keynote by Liza Proctor",
       "13": "Keynote by Emrys Wyllt"
     ]
   end
